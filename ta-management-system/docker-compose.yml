@@ -31,6 +31,7 @@ services:
       DB_USER: root
       DB_PASS: 1234567890
       JWT_SECRET: your-secret-key-change-in-production
+      FRONTEND_ORIGIN: http://localhost:3000,http://127.0.0.1:3000
     volumes:
       - uploads_data:/root/uploads
     depends_on:

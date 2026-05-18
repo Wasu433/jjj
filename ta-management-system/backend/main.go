@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"os"
+	"strings"
 
 	"ta-management/database"
 	"ta-management/handlers"
@@ -21,9 +22,10 @@ func main() {
 	if frontendOrigin == "" {
 		frontendOrigin = "http://localhost:5173"
 	}
+	allowedOrigins := strings.Split(frontendOrigin, ",")
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{frontendOrigin},
+		AllowOrigins:     allowedOrigins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials: true,
